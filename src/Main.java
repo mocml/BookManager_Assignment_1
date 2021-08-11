@@ -18,18 +18,24 @@ public class Main {
         Scanner sc = new Scanner(System.in);
         Validation v = new Validation();
         Manager manager = new Manager();
-        System.out.println("1.  Book Manager");
-        System.out.println("2.  Reader Manager");
-        System.out.println("3.  Lending Manager");
-        while (true) {
+
+        int choice;
+        do {
+            System.out.println("------------MAIN MENU------------");
+            System.out.println("1.  Book Manager");
+            System.out.println("2.  Reader Manager");
+            System.out.println("3.  Lending Manager");
+            System.out.println("0.  Exit");
             System.out.println("\n\t\t----------------");
-            int choice = v.getInt("Option : ", "Option into [1, 3]", 1, 3);
+            choice = v.getInt("Option : ", "Option into [1, 3]", 1, 3);
             switch (choice) {
                 case 1: {
                     manager.bookManager();
+                    break;
                 }
                 case 2: {
-
+                    manager.readerManager();
+                    break;
                 }
                 case 3: {
 
@@ -39,6 +45,6 @@ public class Main {
                     break;
                 }
             }
-        }
+        } while (choice != 0);
     }
 }

@@ -12,24 +12,24 @@
  */
 public class Reader {
 
-    private String rCode;
+    private int rCode;
     private String name;
     private int bYear;
 
     public Reader() {
     }  
 
-    public Reader(String rCode, String name, int bYear) {
+    public Reader(int rCode, String name, int bYear) {
         this.rCode = rCode;
         this.name = name;
         this.bYear = bYear;
     }
 
-    public String getrCode() {
+    public int getrCode() {
         return rCode;
     }
 
-    public void setrCode(String rCode) {
+    public void setrCode(int rCode) {
         this.rCode = rCode;
     }
 
@@ -51,7 +51,7 @@ public class Reader {
 
     @Override
     public String toString() {
-        return "Reader{" + "rCode=" + rCode + ", name=" + name + ", bYear=" + bYear + '}';
+        return String.format("%-8s | %-8s | %-8s ", rCode,name,bYear);
     }
     
 }
