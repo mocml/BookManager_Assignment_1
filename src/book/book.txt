@@ -1,6 +1,5 @@
-B03  |  Morning   |  12  |  25.1
-B01  |  The noon  |  10  |  5.2
-B02  |  River     |  5   |  4.3
-B05  |  Physics   |  7   |  15.4
-B07  |  Biology   |  11  |  12.2
-B04  |  Southern  |  9   |  5.2
+1 | A | 3 | 2 | 2   
+3 | B | 2 | 1 | 1
+2 | C | 5 | 4 | 3
+4 | D | 4 | 3 | 5
+

@@ -152,6 +152,14 @@ public class BookManager {
         }
     }
 
+    void updatePriceByCode(String code,int price ){
+        Node root  = head;
+        while(root != null){
+            Node p = searchNodeByCode(code);
+            p.info.setPrice(price);
+            root = root.next;
+        }
+    }
     void sortByCodeDEC() {
         Node pi, pj;
         Book b;
@@ -199,6 +207,22 @@ public class BookManager {
         System.out.println();
     }
 
+    void visitNEW(Node p) {
+        String dp = String.format("%-5s  %-12s  %-8s  %-8s  %-8.0f ",
+                p.info.getbCode(), p.info.getTitle(), p.info.getQuantity(),
+                p.info.getLended(), p.info.getPrice());
+        System.out.println(dp);
+    }
+
+    void displayTravel() {
+        Node p = head;
+        while (p != null) {
+            visitNEW(p);
+            p = p.next;
+        }
+        System.out.println();
+    }
+
     int size() {
         int i = 0;
         Node p = head;
@@ -218,8 +242,8 @@ public class BookManager {
             String a[];
             Book book;
             String bcode, title;
-            int quantity;
-            double price;
+            int quantity, lended;
+            int price;
             while (true) {
                 s = br.readLine();
                 if (s == null || s.trim().length() < 3) {
@@ -229,8 +253,9 @@ public class BookManager {
                 bcode = a[0].trim();
                 title = a[1].trim();
                 quantity = Integer.valueOf(a[2].trim());
-                price = Double.valueOf(a[3].trim());
-                book = new Book(bcode, title, quantity, price);
+                lended = Integer.valueOf(a[3].trim());
+                price = Integer.valueOf(a[4].trim());
+                book = new Book(bcode, title, quantity, lended, price);
                 if (searchNodeByCode(book.getbCode()) == null) {
                     addLast(book);
                 }
@@ -262,9 +287,10 @@ public class BookManager {
         String bcode = v.getString("Code : ", "Please enter character!", "[a-zA-Z0-9]+");
         String title = v.getString("Title : ", "Please enter character!", "[a-zA-Z0-9]+");
         int quantity = v.getInt_2("Quantity : ", "Quantity must be greater than 0");
+        int lended = v.getInt_2("Lending : ", "Lending must be greater than 0");
         double price = v.getDouble("Price : ", "Quantity must be greater than 0");
 
-        Book book = new Book(bcode, title, quantity, price);
+        Book book = new Book(bcode, title, quantity, lended, price);
         return book;
     }
     String file1 = "book/book.txt";
@@ -300,7 +326,7 @@ public class BookManager {
             return;
         }
         String filename = v.getString("File name :", "Format Error", "[a-zA-Z0-9]+");
-        loadSave("book/"+filename+".txt");
+        loadSave("book/" + filename + ".txt");
         System.err.println("SAVED");
     }
 
@@ -387,5 +413,54 @@ public class BookManager {
         delete(pos(index - 1));
         display();
         System.err.println("DELETED !!");
+    }
+
+    void f11() throws IOException {
+        clear();
+        loadFile(file1);
+        displayTravel();
+    }
+
+    void f12() throws IOException {
+        Book book = new Book("6", "E", 3, 2, 2);
+        if (searchNodeByCode(book.getbCode()) == null) {
+            addLast(book);
+            System.err.println("ADD SUCCESS !!");
+            displayTravel();
+            return;
+        }
+        System.err.println("Book is exist !");
+        //displayTravel();
+    }
+
+    void f13() {
+        updatePriceByCode("3", 8);
+        displayTravel();
+    }
+
+  
+
+    void f14() {
+        deleteByCode("2");
+        displayTravel();
+    }
+
+    void sortByQuantityDEC() {
+        Node pi, pj;
+        Book b;
+        for (pi = head; pi != null; pi = pi.next) {
+            for (pj = pi.next; pj != null; pj = pj.next) {
+                if (pi.info.getQuantity() > pj.info.getQuantity()) {
+                    b = pj.info;
+                    pj.info = pi.info;
+                    pi.info = b;
+                }
+            }
+        }
+    }
+
+    void f15() {
+        sortByQuantityDEC();
+        displayTravel();
     }
 }

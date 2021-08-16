@@ -31,6 +31,11 @@ public class Manager {
                     + "8.  Input & add to beginning\n"
                     + "9.  Add after position  k\n"
                     + "10. Delete position k\n"
+                    + "11. LOAD k\n"
+                    + "12. ADD WITHOUT LOAD k\n"
+                    + "13. UPDATE BY SEARCH k\n"
+                    + "14. DELETE BY CODE\n"
+                    + "15. SORT BY QUANTITY k\n"
                     + "0.  Back to Main"
                     + "\n===================");
 
@@ -76,6 +81,26 @@ public class Manager {
                 }
                 case 10: {
                     m.f10();
+                    break;
+                }
+                case 11: {
+                    m.f11();
+                    break;
+                }
+                case 12: {
+                    m.f12();
+                    break;
+                }
+                case 13: {
+                    m.f13();
+                    break;
+                }
+                case 14: {
+                    m.f14();
+                    break;
+                }
+                case 15: {
+                    m.f15();
                     break;
                 }
             }
