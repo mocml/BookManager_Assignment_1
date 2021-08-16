@@ -218,7 +218,7 @@ public class BookManager {
             String a[];
             Book book;
             String bcode, title;
-            int quantity, lended;
+            int quantity;
             double price;
             while (true) {
                 s = br.readLine();
