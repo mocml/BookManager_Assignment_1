@@ -19,8 +19,7 @@ public class Manager {
     void bookManager() throws IOException {
         BookManager m = new BookManager();
         int choice;
-        do {
-            System.out.println("===================BOOK MANAGER===================\n"
+          System.out.println("===================BOOK MANAGER===================\n"
                     + "1.  Load data from file\n"
                     + "2.  Input & add to the end\n"
                     + "3.  Display data\n"
@@ -40,6 +39,8 @@ public class Manager {
                     + "\n===================");
 
             System.out.println("\n\t\t----------------");
+        do {
+          
             System.out.print("Option : ");
             choice = Integer.valueOf(sc.nextLine());
             switch (choice) {
